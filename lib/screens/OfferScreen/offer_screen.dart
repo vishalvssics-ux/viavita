@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:viavita_new_customer/color/colors.dart';
 import 'package:viavita_new_customer/images/images.dart';
-import 'package:viavita_new_customer/screens/DetailScreen/detail_screen.dart';
+
 
 
 class OffersScreen extends StatefulWidget {

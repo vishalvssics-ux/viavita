@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:viavita_new_customer/Worker/Home/screen.dart';
 import 'package:viavita_new_customer/color/colors.dart';
 import 'package:viavita_new_customer/images/images.dart';
 import 'package:viavita_new_customer/screens/HomeScreen/home_screen.dart';
@@ -7,14 +8,14 @@ import 'package:viavita_new_customer/screens/ProfileScreen/profilescreen.dart';
 import 'package:viavita_new_customer/screens/TaskScreen/add_task_screen.dart';
 import 'package:viavita_new_customer/screens/TaskScreen/taskscreen.dart';
 
-class BottomNavigationScreen extends StatefulWidget {
-  const BottomNavigationScreen({super.key});
+class WorkerBottomscreen extends StatefulWidget {
+  const WorkerBottomscreen({super.key});
 
   @override
-  State<BottomNavigationScreen> createState() => _BottomNavigationScreenState();
+  State<WorkerBottomscreen> createState() => _WorkerBottomscreenState();
 }
 
-class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
+class _WorkerBottomscreenState extends State<WorkerBottomscreen> {
   int selectedIndex = 0;
 
   void onTapped(int index) {
@@ -24,7 +25,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   }
 
   final List<Widget> pages = [
-    TaskAppScreen(),
+ WorkerHomeWidget(),
     TasksScreen(),
     OffersScreen(),
     ProfileScreen()
@@ -49,7 +50,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               bottomFields(
                 image: Appicons.task_icon,
                 index: 1,
-                name: 'Tasks',
+                name: 'My Tasks',
                 onTap: () => onTapped(1),
               ),
               bottomFields(

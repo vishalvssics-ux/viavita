@@ -144,7 +144,7 @@ class _PaintingDetailsScreenState extends State<PaintingDetailsScreen> {
           Text(
             value,
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 12,
               fontWeight: FontWeight.bold,
                color: colors.task_text_color
             ),

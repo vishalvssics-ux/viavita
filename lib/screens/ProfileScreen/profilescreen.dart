@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:viavita_new_customer/Shopkeeper/SKLoginScreen/sk_loginscreen.dart';
 import 'package:viavita_new_customer/color/colors.dart';
 import 'package:viavita_new_customer/images/images.dart';
 import 'package:viavita_new_customer/screens/ProfileScreen/edit_profile_screen.dart';
@@ -13,6 +14,90 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  void showLogoutDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    // Prevents closing by tapping outside
+    barrierDismissible: true,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        // Set the custom rounded shape for the dialog box
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        // Removes default padding/margins around the content
+        contentPadding: const EdgeInsets.all(30.0),
+        
+        // Custom content: Title and prompt text
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            const Text(
+              'Logout',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'Are you sure you want to Logout?',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.black54,
+              ),
+            ),
+            const SizedBox(height: 30),
+            // The row for the buttons
+            Row(
+              children: <Widget>[
+                // 1. "No" Button (Outlined with Red Text)
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: colors.app_color_1)
+                      ),
+                      child: Center(child: Text('No',style: TextStyle(color: colors.app_color_1),)),
+                      height: 50,
+                      width: double.infinity,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 15),
+                // 2. "Yes" Button (Gradient)
+                Expanded(
+                  child:  InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const SkLoginscreen()));
+                    },
+                    child: Container(
+                      height: 50,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                         gradient: LinearGradient(colors: [
+                          colors.app_color_1,colors.app_color_2
+                        ])),  child: Center(child: Text('Yes',style: TextStyle(color: colors.background_color),)),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+  
+  
   @override
   Widget build(BuildContext context) {
    final displaysize=MediaQuery.of(context).size;
@@ -46,7 +131,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               },
                               child: Icon(Icons.arrow_back_ios,color: Colors.white,size: 16,)),
                             Text('Profile',style: TextStyle(color: Colors.white),),
-                             Icon(Icons.logout,color: Colors.white,size: 17,),
+                             InkWell(
+                              onTap: () {
+                                showLogoutDialog(context);
+                              },
+                              child: Icon(Icons.logout,color: Colors.white,size: 17,)),
 
                           ],
                         ),

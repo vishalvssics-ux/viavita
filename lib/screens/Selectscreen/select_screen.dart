@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:viavita_new_customer/Shopkeeper/SKLoginScreen/sk_loginscreen.dart';
+import 'package:viavita_new_customer/Worker/WorkerLoginScreen/worker_loginscreen.dart';
 import 'package:viavita_new_customer/color/colors.dart';
 import 'package:viavita_new_customer/images/images.dart';
 import 'package:viavita_new_customer/screens/LoginScreen/login_screen.dart';
@@ -41,6 +43,10 @@ class _SelectScreenState extends State<SelectScreen> {
                 image: Appicons.customer_icon,
                 label: 'Customer Login',
                 color: Colors.red[600]!,
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+
+                }
               ),
               const SizedBox(height: 16),
               _buildAccountOption(
@@ -48,6 +54,9 @@ class _SelectScreenState extends State<SelectScreen> {
                 image: Appicons.worker_icon,
                 label: 'Worker Access',
                 color: Colors.deepOrange,
+                onTap: (){
+                 Navigator.push(context, MaterialPageRoute(builder: (context)=>WorkerLoginscreen()));
+                }
               ),
               const SizedBox(height: 16),
               _buildAccountOption(
@@ -55,6 +64,11 @@ class _SelectScreenState extends State<SelectScreen> {
                 image: Appicons.shop_icon,
                 label: 'Shop Owner',
                 color: Colors.red[600]!,
+                onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>SkLoginscreen()));
+
+
+                }
               ),
             ],
           ),
@@ -63,7 +77,7 @@ class _SelectScreenState extends State<SelectScreen> {
     );
   }
 
-  Widget _buildAccountOption(BuildContext context, {required String image, required String label, required Color color}) {
+  Widget _buildAccountOption(BuildContext context, {required String image, required String label, required Color color,required Function() onTap}) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -83,13 +97,7 @@ class _SelectScreenState extends State<SelectScreen> {
         color: Colors.transparent,
         child: InkWell(
           borderRadius: BorderRadius.circular(12),
-          onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
-            // Handle tap
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //   SnackBar(content: Text('Tapped on $label')),
-            // );
-          },
+          onTap:onTap,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
             child: Row(

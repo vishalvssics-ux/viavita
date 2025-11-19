@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:viavita_new_customer/color/colors.dart';
 import 'package:viavita_new_customer/images/images.dart';
-import 'package:viavita_new_customer/main.dart';
-import 'package:viavita_new_customer/screens/LoginScreen/login_screen.dart';
+
 import 'package:viavita_new_customer/screens/OnBoardScreen/on_board_screen.dart';
 
 class Splashscreen extends StatefulWidget {

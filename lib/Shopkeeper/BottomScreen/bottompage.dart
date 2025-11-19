@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:viavita_new_customer/Shopkeeper/SKHomeScreen/sk_homescreen.dart';
+import 'package:viavita_new_customer/Shopkeeper/SKRequirementScreen/sk_requirementscreen.dart';
 import 'package:viavita_new_customer/color/colors.dart';
 import 'package:viavita_new_customer/images/images.dart';
 import 'package:viavita_new_customer/screens/HomeScreen/home_screen.dart';
 import 'package:viavita_new_customer/screens/OfferScreen/offer_screen.dart';
 import 'package:viavita_new_customer/screens/ProfileScreen/profilescreen.dart';
-import 'package:viavita_new_customer/screens/TaskScreen/add_task_screen.dart';
+
 import 'package:viavita_new_customer/screens/TaskScreen/taskscreen.dart';
 
-class BottomNavigationScreen extends StatefulWidget {
-  const BottomNavigationScreen({super.key});
+class ShopBottomNavigationSCreen extends StatefulWidget {
+  const ShopBottomNavigationSCreen({super.key});
 
   @override
-  State<BottomNavigationScreen> createState() => _BottomNavigationScreenState();
+  State<ShopBottomNavigationSCreen> createState() => _ShopBottomNavigationSCreenState();
 }
 
-class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
+class _ShopBottomNavigationSCreenState extends State<ShopBottomNavigationSCreen> {
   int selectedIndex = 0;
 
   void onTapped(int index) {
@@ -24,10 +26,10 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   }
 
   final List<Widget> pages = [
-    TaskAppScreen(),
-    TasksScreen(),
-    OffersScreen(),
-    ProfileScreen()
+    SKHomePageWidget(),
+    SKRequirementsWidget(),
+    ProfileScreen(),
+
   ];
 
   @override
@@ -47,43 +49,21 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                 onTap: () => onTapped(0),
               ),
               bottomFields(
-                image: Appicons.task_icon,
+                image: Appicons.requirements_icon,
                 index: 1,
-                name: 'Tasks',
+                name: 'Requirements',
                 onTap: () => onTapped(1),
               ),
-              bottomFields(
-                image: Appicons.offer_icon,
-                index: 2,
-                name: 'Offers',
-                onTap: () => onTapped(2),
-              ),
+             
               bottomFields(
                 image: Appicons.profile_bottom_icon,
-                index: 3,
+                index: 2,
                 name: 'Profile',
-                onTap: () => onTapped(3),
+                onTap: () => onTapped(2),
               ),
             ],
           ),
       ),
-      floatingActionButton: ClipOval(
-        
-        child: Material(
-          
-          color: colors.app_color_2,
-          child: InkWell(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>AddTasksScreen()));
-            },
-            child: SizedBox(height: 52,width: 52,
-            child: Icon(Icons.add,color: colors.background_color,),
-            ),
-
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       
     );
   }
